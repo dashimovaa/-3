@@ -175,3 +175,16 @@ print("Число в обратном порядке:", reversed_number)
 # //        15. Шифр Цезаря (строковые операции).
 # //        Попросите пользователя ввести строку и сдвинуть все буквы в строке на N позиций вперед по алфавиту (циклически),
 # //                где N - целое число, введенное пользователем. Выведите зашифрованную строку.
+def caesar_cipher(text, shift):
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():
+            is_upper = char.isupper()
+            char = char.lower()
+            shifted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
+            if is_upper:
+                shifted_char = shifted_char.upper()
+            encrypted_text += shifted_char
+        else:
+            encrypted_text += char
+    return encrypted_text
